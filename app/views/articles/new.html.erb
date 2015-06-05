@@ -1,12 +1,4 @@
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
+<h1>New Article for category: <%= @category.name %></h1>
 
 <%= form_for([@category, @category.articles.build]) do |f| %>
 

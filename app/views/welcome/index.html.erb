@@ -1,2 +1,19 @@
-<h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'categories' %>
+<h1>Latest Articles</h1> <%= link_to 'Add article', new_article_uncategorized_path %>
+<% @articles.each do |article| %>
+  <div class="post-preview">
+      <h2 class="post-title">
+      <%= link_to article.title, article_path(article) %>
+      </h2>
+      <h3 class="post-subtitle">
+          <%= article.text %>
+      </h3>
+      <div id="articleactions">
+        <%= link_to 'Edit', edit_article_path(article) %> |
+        <%= link_to 'Delete', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+        </div>
+      <p class="post-meta">Posted on <%= article.updated_at.strftime('%c') %></p>
+  </div>
+  <hr>
+<% end %>

@@ -38,9 +38,13 @@ class ArticlesController < ApplicationController
     @article=Article.new(article_params)
 
     if @article.valid?
-      params[:category_ids].each do |category_id|
-        category=Category.find(category_id)
-        category.articles << @article
+      if params[:category_ids]
+        params[:category_ids].each do |category_id|
+          category=Category.find(category_id)
+          category.articles << @article
+        end
+      else
+         @article.save
       end
       redirect_to categories_path
     else
@@ -54,9 +58,11 @@ class ArticlesController < ApplicationController
 
     if @article.update(article_params)
       @article.categories.delete_all
-      params[:category_ids].each do |category_id|
-        category=Category.find(category_id)
-        category.articles << @article
+      if params[:category_ids]
+        params[:category_ids].each do |category_id|
+          category=Category.find(category_id)
+          category.articles << @article
+        end
       end
       redirect_to @article
     else
@@ -69,7 +75,11 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to category_articles_path(params[:category_id])
+    if params[:category_id]
+      redirect_to category_articles_path(params[:category_id])
+    else
+      redirect_to root_path
+    end
   end
 
   private
