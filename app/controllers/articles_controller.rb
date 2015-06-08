@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+before_action :require_user, except: [:index, :show]
+
   def index
     @category=Category.find(params[:category_id])
     @articles = @category.articles

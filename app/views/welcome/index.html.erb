@@ -1,4 +1,9 @@
-<h1>Latest Articles</h1> <%= link_to 'Add article', new_article_uncategorized_path %>
+<h1>Latest Articles</h1>
+
+<% if current_user %>
+  <%= link_to 'Add article', new_article_uncategorized_path %>
+<% end %>
+
 <% @articles.each do |article| %>
   <div class="post-preview">
       <h2 class="post-title">
@@ -7,12 +12,14 @@
       <h3 class="post-subtitle">
           <%= article.text %>
       </h3>
-      <div id="articleactions">
-        <%= link_to 'Edit', edit_article_path(article) %> |
-        <%= link_to 'Delete', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+      <% if current_user %>
+        <div id="articleactions">
+          <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Delete', article_path(article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
         </div>
+      <% end %>
       <p class="post-meta">Posted on <%= article.updated_at.strftime('%c') %></p>
   </div>
   <hr>
