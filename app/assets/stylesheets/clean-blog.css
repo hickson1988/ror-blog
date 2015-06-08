@@ -18,6 +18,10 @@ ul#categorieslist {
     font-size: 0.8em;
 }
 
+#error_explanation {
+    color: #ff4d4d;
+}
+
 .loginarea{
   color: #fff;
   padding: 15px 15px 15px 0;
