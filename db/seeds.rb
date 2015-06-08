@@ -31,3 +31,5 @@ articles2=Article.create([
 
 Category.create(name: 'Sports', description: 'A category about sports', articles: articles1)
 Category.create(name: 'Science', description: 'A category about science', articles: articles2)
+
+User.create(first_name: 'admin', last_name: 'admin', email: 'admin@test.com', password: 'admin')
