@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'articles/new/uncategorized', to: 'articles#newuncategorized', as: :new_article_uncategorized
   post 'articles/create/uncategorized', to: 'articles#createuncategorized', as: :create_article_uncategorized
 
+  get 'restricted'  => 'users#restricted'
+
   get 'signup'  => 'users#new'
   get 'login'  => 'sessions#new'
   post 'login' => 'sessions#create'

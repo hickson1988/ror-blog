@@ -19,12 +19,7 @@ comments2=Comment.create([
   { body: 'Hello there'}])
 
 comments3=Comment.create([
-  { body: 'Olympus mathon 2015 :)'}])
-
-user=User.create(first_name: 'admin', last_name: 'admin', email: 'admin@test.com', password: 'admin')
-user.comments << comments1
-user.comments << comments2
-user.comments << comments3
+  { body: 'Olympus mathon 2015'}])
 
 articles1=Article.create([
   { title: 'Champions league finals',text: article_text, comments: comments2},
@@ -36,5 +31,17 @@ articles2=Article.create([
   { title: 'New scientific discovery!',text: article_text, comments: comments1},
   { title: 'How to format a PC',text: article_text}])
 
-Category.create(name: 'Sports', description: 'A category about sports', articles: articles1)
-Category.create(name: 'Science', description: 'A category about science', articles: articles2)
+category1=Category.create(name: 'Sports', description: 'A category about sports', articles: articles1)
+category2=Category.create(name: 'Science', description: 'A category about science', articles: articles2)
+
+user_admin=User.create(first_name: 'admin', last_name: 'admin', email: 'admin@test.com', password: 'admin')
+user_admin.comments << comments1
+user_admin.comments << comments2
+user_admin.articles << articles1
+user_admin.categories << category1
+
+
+user_user=User.create(first_name: 'user1', last_name: 'user1', email: 'user1@test.com', password: 'user1')
+user_user.comments << comments3
+user_user.articles << articles2
+user_user.categories << category2

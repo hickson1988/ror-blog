@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :require_user, only: [:create,:destroy]
+  before_action only: [:destroy] do |c| c.require_user_resource_owner(Comment.find(params[:id])) end
 
   def create
     @user=User.find(session[:user_id])

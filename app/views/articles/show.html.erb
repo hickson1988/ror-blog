@@ -31,16 +31,20 @@
 <% end %>
 
 <h3>Add a comment:</h3>
-<%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+<% if current_user %>
+  <%= form_for([@article, @article.comments.build]) do |f| %>
+    <p>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<% else %>
+  <p>You have to be logged in to comment.</p>
 <% end %>
 
- <% if current_user %>
+ <% if current_user and current_user == @article.user %>
   <%= link_to 'Edit article', edit_article_path(@article) %> |
   <%= link_to 'Delete article', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
