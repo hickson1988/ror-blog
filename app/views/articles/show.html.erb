@@ -41,7 +41,7 @@
     </p>
   <% end %>
 <% else %>
-  <p>You have to be logged in to comment.</p>
+  <p>You have to be logged in to comment. <%= link_to 'Login', login_path %></p>
 <% end %>
 
  <% if current_user and current_user == @article.user %>

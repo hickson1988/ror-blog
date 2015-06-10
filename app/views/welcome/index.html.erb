@@ -9,9 +9,18 @@
       <h2 class="post-title">
       <%= link_to article.title, article_path(article) %>
       </h2>
+      <div id="categoriestags">
+        Categories:
+        <% category_names=Array.new %>
+        <% article.categories.each do |category| %>
+          <%category_names.push(link_to category.name, category_articles_path(category))%>
+        <% end %>
+        <%= raw category_names.join(', ')%>
+      </div>
       <h3 class="post-subtitle">
-          <%= article.text %>
+          <%= truncate(article.text, length: 110) %>
       </h3>
+      <span> <%= link_to 'Read more', article_path(article) %></span>
       <% if current_user  and current_user == article.user %>
         <div id="articleactions">
           <%= link_to 'Edit', edit_article_path(article) %> |
