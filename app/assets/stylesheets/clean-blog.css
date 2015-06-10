@@ -4,6 +4,11 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+.commentinfo {
+    color: #7d7473;
+    font-size: 0.8em;
+}
+
 ul#categorieslist {
   list-style-type: none;
 }

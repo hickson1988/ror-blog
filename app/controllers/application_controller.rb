@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+   def current_user_resource_owner resource
+    @current_user ||= current_user if current_user and current_user == resource.user
+  end
+
+   def require_user_resource_owner resource
+    redirect_to '/restricted' unless current_user_resource_owner resource
+  end
+
 end

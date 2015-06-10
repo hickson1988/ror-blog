@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
 before_action :require_user, except: [:index, :show]
+before_action only: [:edit, :update, :destroy] do |c| c.require_user_resource_owner(Article.find(params[:id])) end
+
 
   def index
     @category=Category.find(params[:category_id])
@@ -29,6 +31,8 @@ before_action :require_user, except: [:index, :show]
   def create
     @category=Category.find(params[:category_id])
     @article=@category.articles.create(article_params)
+    @user=User.find(session[:user_id])
+    @user.articles << @article
     if @article.valid?
       redirect_to category_articles_path(@category)
     else
@@ -38,6 +42,8 @@ before_action :require_user, except: [:index, :show]
 
   def createuncategorized
     @article=Article.new(article_params)
+    @user=User.find(session[:user_id])
+    @user.articles << @article
 
     if @article.valid?
       if params[:category_ids]

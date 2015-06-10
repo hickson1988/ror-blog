@@ -12,7 +12,7 @@
     <h3 class="post-subtitle">
         <%= article.text %>
     </h3>
-    <% if current_user %>
+    <% if current_user and current_user == article.user%>
       <div id="articleactions">
         <%= link_to 'Edit', edit_article_path(article) %> |
         <%= link_to 'Delete', article_path(:id => article.id, :category_id =>@category.id),
