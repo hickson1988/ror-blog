@@ -24,7 +24,7 @@
               <% if current_user %>
                  <%= link_to 'Welcome', root_path,class: "navbar-brand" %>
                  <span class="loginarea">
-                    <%= current_user.email %> |
+                    <%= link_to current_user.email, edit_user_path(current_user) %> |
                     <%= link_to " Log out", logout_path, method: "delete" %>
                 </span>
               <% else %>
