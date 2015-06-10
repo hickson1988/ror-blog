@@ -18,7 +18,7 @@
       <td><%= category.description %></td>
       <td>
           <%= link_to 'Articles', category_articles_path(category) %><br />
-          <% if current_user and current_user == category.user%>
+          <% if current_user_resource_owner category%>
             <%= link_to 'Edit', edit_category_path(category) %><br />
             <%= link_to 'Delete', category_path(category),
                     method: :delete,
