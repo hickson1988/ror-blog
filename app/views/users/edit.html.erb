@@ -1,20 +1,21 @@
-<h1>Sign up</h1>
+<h1>Edit account</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %> prohibited
-      this user from being saved:
-    </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= form_for @user, url: user_path(@user), method: :patch do |f| %>
 
-<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -36,6 +37,8 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Update" %>
   </p>
+
 <% end %>
+

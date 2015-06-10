@@ -21,7 +21,7 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
-  <% if current_user and current_user == comment.user %>
+  <% if current_user_resource_owner comment %>
     <p>
       <%= link_to 'Delete Comment', comment,
                    method: :delete,
@@ -44,7 +44,7 @@
   <p>You have to be logged in to comment. <%= link_to 'Login', login_path %></p>
 <% end %>
 
- <% if current_user and current_user == @article.user %>
+ <% if current_user_resource_owner @article %>
   <%= link_to 'Edit article', edit_article_path(@article) %> |
   <%= link_to 'Delete article', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :current_user_resource_owner
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -14,7 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
    def current_user_resource_owner resource
-    @current_user ||= current_user if current_user and current_user == resource.user
+    current_user_temp=current_user
+    @current_user ||= current_user_temp if current_user_temp and current_user_temp == resource.user
   end
 
    def require_user_resource_owner resource
