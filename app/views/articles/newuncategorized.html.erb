@@ -20,7 +20,7 @@
   <ul id="categorieslist">
     <% @categories.each do |category| %>
         <li>
-          <%= check_box_tag 'category_ids[]',category.id %>
+          <%= check_box_tag 'category_ids[]',category.id, params[:category_ids]?params[:category_ids].include?(category.id.to_s):false %>
           <%= label_tag('category_ids[]',category.name) %>
         </li>
     <% end %>

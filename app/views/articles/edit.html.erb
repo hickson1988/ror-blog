@@ -21,24 +21,11 @@
       <label>Categories</label>
       <%
         @allcategories.each do |category|
-            article_is_checked=false;
-            @article.categories.each do |checkedcategory| %>
-
-              <% next if category != checkedcategory%>
-              <li>
-                <%= check_box_tag 'category_ids[]',category.id,true %>
-                <%= label_tag('category_ids[]',category.name) %>
-              </li>
-              <% article_is_checked=true %>
-          <% end %>
-
-          <% if not article_is_checked %>
+      %>
             <li>
-              <%= check_box_tag 'category_ids[]',category.id,false %>
+              <%= check_box_tag 'category_ids[]',category.id,@article.categories.include?(category) %>
               <%= label_tag('category_ids[]',category.name) %>
             </li>
-          <% end %>
-
       <% end %>
     </ul>
   <% end %>
