@@ -6,7 +6,7 @@ before_action only: [:edit, :update, :destroy] do |c| c.require_user_resource_ow
 
   def index
     @category=Category.find(params[:category_id])
-    @articles = @category.articles.order(updated_at: :desc)
+    @articles = @category.articles.page(params[:page]).order(created_at: :desc)
   end
 
   def show

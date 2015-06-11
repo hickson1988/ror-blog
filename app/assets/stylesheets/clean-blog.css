@@ -4,6 +4,41 @@
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+pagination {
+  margin: 20px 0 0;
+}
+
+.pagination a,
+.pagination span {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 15px 25px;
+  background-color: white;
+  border-radius: 0;
+}
+
+.pagination a {
+  border: 1px solid #0085a1;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  color: white;
+  background-color: #0085a1;
+  border: 1px solid #0085a1;
+}
+
+.pagination .disabled > a,
+.pagination .disabled > a:hover,
+.pagination .disabled > a:focus {
+  color: #808080;
+  background-color: #404040;
+  cursor: not-allowed;
+}
+
 .commentinfo {
     color: #7d7473;
     font-size: 0.8em;

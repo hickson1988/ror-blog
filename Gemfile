@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 #Email format validator
 gem 'validates_email_format_of'
 
+#Pagination
+gem 'will_paginate'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

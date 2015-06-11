@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @articles = Article.all.order(updated_at: :desc)
+    @articles = Article.page(params[:page]).order(created_at: :desc)
   end
 end
