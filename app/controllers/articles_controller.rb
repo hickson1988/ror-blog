@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 before_action :require_user, except: [:index, :show]
 before_action only: [:edit, :update, :destroy] do |c| c.require_user_resource_owner(Article.find(params[:id])) end
 
-
   def index
     @category=Category.find(params[:category_id])
     @articles = @category.articles.page(params[:page]).order(created_at: :desc)
