@@ -7,4 +7,14 @@ FactoryGirl.define do
     f.email { Faker::Internet.email }
     f.password { Faker::Internet.password }
   end
+
+  factory :invalid_user, parent: :user do |f|
+    f.first_name nil
+  end
+
+  factory :user_with_articles, parent: :user do |f|
+    after(:create) do |user|
+      user.articles << FactoryGirl.create(:article)
+    end
+  end
 end
